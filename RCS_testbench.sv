@@ -1,45 +1,49 @@
+//not giving a specific timescale gave no errors and was left
+//to the default of Icarus Verilog 12.0
 module RCS_testbench;
   reg [3:0] A, B;
-  wire [3:0] S;
-  wire Cout;
+  reg [3:0] S;
+  reg Cout;
   
   
-  four_bit_RCS_test (.A (A)
-                     .B (B)
-                     .S (S)
+  four_bit_RCS DUT  (.A (A),
+                     .B (B),
+                     .S (S),
                      .Cout (Cout)
                     );
-  intial
-  begin
+   initial
+   begin
     //display header
     $display("A     B     Cout     S");
     $display("-----------------------");
     
     //display test cases and outputs
     
-    /*seems like we can just assign A, B
-    then print the outputs S and Cout like
-    we would in C; %d gives you the dec, %b
-    gives you the 4-bit binary */
+    A = 4'b0000; 
+    B = 4'b0000; 
+    #10
+     $display("%b  - %b  |  %b   %b", A, B, Cout, S);
     
-    /*figure out this relevance of this
-    "time unit" thing*/
-    
-    A = 4'b0000; B = 4'b0000;
-    $display("%d  - %d  |  %d   %d", A, B, S, Cout);
-    
-     A = 4'b0101; B = 4'b0011;
-    $display("%b  - %b  |  %b   %b", A, B, S, Cout);
+    A = 4'b0101; 
+    B = 4'b0011; 
+    #10
+     $display("%b  - %b  |  %b   %b", A, B, Cout, S);
 
-    A = 4'b1001; B = 4'b0110;
-    $display("%b  - %b  |  %b   %b", A, B, S, Cout);
+    A = 4'b1001; 
+    B = 4'b0110; 
+    #10
+     $display("%b  - %b  |  %b   %b", A, B, Cout, S);
 
-    A = 4'b1111; B = 4'b0001;
-    $display("%b  - %b  |  %b   %b", A, B, S, Cout);
+    A = 4'b1111; 
+    B = 4'b0001; 
+    #10
+     $display("%b  - %b  |  %b   %b", A, B, Cout, S);
 
-    A = 4'b1111; B = 4'b1111;
-    $display("%b  - %b  |  %b   %b", A, B, S, Cout);
+    A = 4'b1111; 
+    B = 4'b1111; 
+    #10
+     $display("%b  - %b  |  %b   %b", A, B, Cout, S);
     
-  end
+   end
   
 endmodule
