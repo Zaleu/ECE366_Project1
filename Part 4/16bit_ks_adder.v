@@ -11,7 +11,7 @@ module kogge_stone_adder(
     assign P = A ^ B;  // Propagate: P[i] = A[i] ⊕ B[i]
     assign G = A & B;  // Generate: G[i] = A[i] & B[i]
 
-    // Parallel Prefix Network (Carry Tree)
+  
     wire [15:0] G1, P1;
     wire [15:0] G2, P2;
     wire [15:0] G3, P3;
