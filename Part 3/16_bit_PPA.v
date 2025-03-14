@@ -1,4 +1,4 @@
-module prefix_adder; (
+module prefix_adder (
     input [15:0] A, B,
     input Cin,
     output [15:0] Sum,
